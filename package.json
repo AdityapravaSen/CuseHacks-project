@@ -22,5 +22,13 @@
   "engines": {
     "npm": "^6.13.4",
     "node": "^12.14.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aritra1311/CuseHacks-project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aritra1311/CuseHacks-project/issues"
+  },
+  "homepage": "https://github.com/aritra1311/CuseHacks-project#readme"
 }
