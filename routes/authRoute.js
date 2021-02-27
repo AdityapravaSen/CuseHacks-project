@@ -1,22 +1,15 @@
 const { Router } = require('express');
+const authController = require('../controllers/authController');
 
 const router = Router();
-let coords = {};
+//let coords = {};
 
-router.get('/signup', () => {
+router.get('/signup', authController.signup_get);
 
-});
+router.post('/signup', authController.signup_post);
 
-router.post('/signup', () => {
+router.get('/login', authController.login_get);
 
-});
-
-router.get('/login', function (req, res) {
-    res.render('login');
-});
-
-router.post('/login', function (req, res) {
-
-});
+router.post('/login', authController.login_post);
 
 module.exports = router;

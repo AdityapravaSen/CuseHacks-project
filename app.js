@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const { response, query } = require("express");
 const fetch = require('node-fetch');
 let PORT = process.env.PORT || 3000;
+const authRoutes = require('./routes/authRoute');
 
 const app = express();
 
@@ -24,6 +25,11 @@ app.get("/", function (req, res) {
     res.render('index');
 
 });
+app.get('/dashboard', function (req, res) {
+    res.render('dashboard');
+});
+
+app.use(authRoutes);
 
 
 
