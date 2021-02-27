@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/header'); -%>
+
+    <body>
+        <div class="container register">
+            <div class="row">
+                <div class="col-md-3 register-left">
+                    <h3>JOIN<br> AMBULANCE GO🚨</h3>
+                    <p>Already a member? login below</p>
+                    <a href="/login"><button class="btn btn-outline-light">Login</button></a>
+                </div>
+                <div class="col-md-9 register-right">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <h3 class="register-heading">Register As An Ambulance Service Provider</h3>
+                            <form action="/signup" method="post">
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Service Name *"
+                                                name="name" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Password *"
+                                                name="password" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Address *"
+                                                name="address" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Pincode *"
+                                                name="pincode" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" minlength="10" maxlength="10" name="txtEmpPhone"
+                                                class="form-control" placeholder="Your Phone *" name="phone" />
+                                        </div>
+                                        <button type="submit" class="btnRegister" name="signup">Register</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <h3 class="register-heading">Apply as a Hirer</h3>
+                            <div class="row register-form">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="First Name *" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Last Name *" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" placeholder="Email *" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" maxlength="10" minlength="10" class="form-control"
+                                            placeholder="Phone *" value="" />
+                                    </div>
+
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Password *" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Confirm Password *"
+                                            value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <select class="form-control">
+                                            <option class="hidden" selected disabled>Please select your Sequrity
+                                                Question</option>
+                                            <option>What is your Birthdate?</option>
+                                            <option>What is Your old Phone Number</option>
+                                            <option>What is your Pet Name?</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="`Answer *" value="" />
+                                    </div>
+                                    <input type="submit" class="btnRegister" value="Register" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </body>
+
+</html>

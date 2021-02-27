@@ -1,0 +1,19 @@
+{
+  "name": "cusehacks-project",
+  "version": "1.0.0",
+  "description": "project for cuse hacks 2021 hackathon",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "Adityaprava Sen, Aritra Basu",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.18",
+    "node-fetch": "^2.6.1"
+  }
+}
