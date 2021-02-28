@@ -27,7 +27,10 @@ userSchema.post('save', function (doc, next) {
     next();
 });
 
-userSchema.pre('save', function () { })
+userSchema.pre('save', function (next) {
+    console.log('user about to be created...', this);
+    next();
+})
 
 const User = mongoose.model('user', userSchema);
 
