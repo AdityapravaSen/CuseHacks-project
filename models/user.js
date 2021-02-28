@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
     name: String,
@@ -16,21 +17,27 @@ const userSchema = new mongoose.Schema({
         minlength: [6, 'minimum length is 6 charecters']
     },
     pincode: Number,
-    coordinates: {
-        latitude: Number,
-        longitude: Number
+    latitude: Number,
+    longitude: Number
+});
+
+userSchema.pre('save', async function (next) {
+    const salt = await bcrypt.genSalt();
+    this.password = await bcrypt.hash(this.password, salt);
+    next();
+});
+
+userSchema.statics.login = async function (phone, password) {
+    const user = await this.findOne({ phone });
+    if (user) {
+        const auth = await bcrypt.compare(password, user.password);
+        if (auth) {
+            return user;
+        }
+        throw Error('incorrect password');
     }
-});
-
-userSchema.post('save', function (doc, next) {
-    console.log('new user created and saved', doc);
-    next();
-});
-
-userSchema.pre('save', function (next) {
-    console.log('user about to be created...', this);
-    next();
-})
+    throw Error('incorrect phone number');
+}
 
 const User = mongoose.model('user', userSchema);
 

@@ -26,6 +26,14 @@
                                                 name="password" required />
                                         </div>
                                         <div class="password error"></div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="latitude"
+                                                placeholder="Latitude" />
+                                            <input type="text" class="form-control" name="longitude"
+                                                placeholder="Longitude" />
+                                            <button type="button" class="btn btn-primary location-btn"
+                                                onclick="getLocation()">Get Location</button>
+                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -54,14 +62,14 @@
 
     <script>
         const form = document.querySelector('form');
-        const coords = {};
-
+        const phoneError = document.querySelector('.phone.error');
+        const passwordError = document.querySelector('.password.error');
 
         function getLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (pos) {
-                    coords.latitude = pos.coords.latitude;
-                    coords.longitude = pos.coords.longitude;
+                    form.latitude.value = pos.coords.latitude;
+                    form.longitude.value = pos.coords.longitude;
                 })
             } else {
                 window.alert("location not supported");
@@ -70,16 +78,40 @@
 
 
 
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
+
+            //reset errors
+            phoneError.textContent = '';
+            passwordError.textContent = '';
+
             getLocation();
             const phone = form.phone.value;
             const name = form.name.value;
             const address = form.address.value;
             const pincode = form.pincode.value;
             const password = form.password.value;
+            const latitude = form.latitude.value;
+            const longitude = form.longitude.value
 
-            console.log(phone, name, address, pincode, password, coords);
+            try {
+                const res = await fetch('/signup', {
+                    method: 'POST',
+                    body: JSON.stringify({ phone, name, address, pincode, password, latitude, longitude }),
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                const data = await res.json();
+                console.log(data);
+                if (data.errors) {
+                    phoneError.textContent = data.errors.phone;
+                    passwordError.textContent = data.errors.password;
+                }
+                if (data.user) {
+                    location.assign('/');
+                }
+            } catch (err) {
+                console.log(err);
+            }
         });
     </script>
 

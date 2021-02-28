@@ -74,7 +74,8 @@
                 trackUserLocation: true,
                 showAccuracyCircle: false
             }));
-            locationMarker(map, location, '#FF0000', 'Your Current Location');
+            locationMarker(map, location, '#FF0000', '<h2>Your Current Location</h2>');
+            locationMarker(map, [88.3658, 22.5170], '#0000FF', '<h2>Meera Seva Kendra</h2><br><h3>Gariahat,Kolkata</h3><br><h3>call: +91 9831335922</h3>');
         }
 
         function locationMarker(map, loc, color, msg) {
@@ -84,7 +85,7 @@
             })
                 .setLngLat(loc)
                 .addTo(map)
-                .setPopup(new mapboxgl.Popup().setHTML(`<h1>${msg}</h1>`));
+                .setPopup(new mapboxgl.Popup().setHTML(msg));
         }
     </script>
 

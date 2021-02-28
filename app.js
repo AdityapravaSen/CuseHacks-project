@@ -17,9 +17,9 @@ app.use(express.static("public"));
 app.use(express.json());
 app.use(cookieParser());
 
-const dbUrl = 'mongodb+srv://adityapravasen:PGaOD4plDMg9okAE@cluster0.rlye0.mongodb.net/ambulanceDB';
+const dbUri = 'mongodb+srv://adityapravasen:PGaOD4plDMg9okAE@cluster0.rlye0.mongodb.net/ambulanceDB';
 
-mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+mongoose.connect(dbUri, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 
 
 
